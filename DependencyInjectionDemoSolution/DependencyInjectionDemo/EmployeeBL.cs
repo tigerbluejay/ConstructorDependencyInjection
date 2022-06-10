@@ -8,10 +8,13 @@ namespace DependencyInjectionDemo
 {
     public class EmployeeBL
     {
-        public EmployeeDAL employeeDAL;
+        public IEmployeeDAL employeeDAL;
+        public EmployeeBL(IEmployeeDAL employeeDAL)
+        {
+            this.employeeDAL = employeeDAL;
+        }
         public List<Employee> GetAllEmployees()
         {
-            employeeDAL = new EmployeeDAL();
             return employeeDAL.SelectAllEmployees();
         }
     }
